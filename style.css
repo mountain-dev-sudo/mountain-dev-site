@@ -829,11 +829,12 @@ body.loading, html.loading {
     padding: var(--space-2xl) 0 var(--space-lg);
     position: relative;
     overflow: hidden;
-    z-index: 100;
+    z-index: 10; /* CHANGED: Reduced from 100 to 10 */
     margin-top: 0;
     width: 100%;
+    display: block; /* ADDED: Ensure footer is always displayed */
+    visibility: visible; /* ADDED: Ensure footer is always visible */
 }
-
 .footer::before {
     content: '';
     position: absolute;
@@ -1148,6 +1149,17 @@ body.loading, html.loading {
 
 /* Tablet Styles */
 @media (max-width: 768px) {
+  body {
+        overflow-x: hidden;
+        min-height: 100vh; /* ADDED: Ensure body has minimum height */
+    }
+    
+    /* Prevent main content from overlapping footer */
+    .main-content {
+        margin-bottom: 0; /* ADDED: Remove any bottom margin */
+        padding-bottom: 0; /* ADDED: Remove any bottom padding */
+    }
+
     :root {
         --font-size-3xl: 1.75rem;
         --font-size-4xl: 2rem;
@@ -1246,24 +1258,34 @@ body.loading, html.loading {
         padding: var(--space-xl) 0 var(--space-lg);
         margin-top: 0;
         position: relative;
-        z-index: 100;
+        z-index: 10;
+        display: block !important; /* ADDED: Force display on mobile */
+        visibility: visible !important; /* ADDED: Force visibility on mobile */
+        width: 100%;
+        min-height: 100px; /* ADDED: Ensure minimum height */
     }
 
     .footer-container {
         padding: 0 var(--space-md);
+        width: 100%; /* ADDED: Ensure full width */
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
         gap: var(--space-sm);
+        padding-top: var(--space-lg);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%; /* ADDED: Ensure full width */
     }
 
     .footer-copyright {
         font-size: var(--font-size-sm);
         text-align: center;
         width: 100%;
+        display: block; /* ADDED: Ensure text displays */
     }
+
 
     .footer-decoration {
         display: none;
@@ -1282,6 +1304,15 @@ body.loading, html.loading {
 
         .header.scrolled {
             background: rgba(17, 24, 39, 0.98);
+        }
+        .footer {
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        .footer-copyright {
+            color: rgba(249, 250, 251, 0.8);
+            display: block;
         }
     }
 }
@@ -1333,17 +1364,26 @@ body.loading, html.loading {
         transform: scale(0.6) translateY(0);
     }
 
-    .footer {
+   .footer {
         padding: var(--space-lg) 0 var(--space-md);
+        display: block !important; /* ADDED: Force display on small mobile */
+        visibility: visible !important; /* ADDED: Force visibility on small mobile */
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        min-height: 80px; /* ADDED: Ensure minimum height */
     }
 
     .footer-container {
         padding: 0 var(--space-sm);
+        width: 100%; /* ADDED: Ensure full width */
     }
 
     .footer-copyright {
         font-size: 0.75rem;
         padding: var(--space-sm) 0;
+        display: block; /* ADDED: Ensure text displays */
+        width: 100%;
     }
 
     .contact-modal {
