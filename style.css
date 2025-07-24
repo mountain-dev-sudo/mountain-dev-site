@@ -244,6 +244,8 @@ body.loading, html.loading {
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out 0.3s forwards;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title {
@@ -272,7 +274,10 @@ body.loading, html.loading {
     opacity: 0.7;
     cursor: pointer;
     transition: all var(--transition-base);
-    background: none;
+    background: rgba(0, 0, 0, 0.2);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(10px);
     border: none;
     color: var(--white);
 }
@@ -364,6 +369,7 @@ body.loading, html.loading {
     padding: var(--space-3xl) 0;
     background: var(--light-gray);
     position: relative;
+    z-index: 1;
 }
 
 .what-i-do-container {
@@ -465,6 +471,7 @@ body.loading, html.loading {
     padding: var(--space-3xl) 0;
     background: var(--white);
     position: relative;
+    z-index: 1;
 }
 
 .services-container {
@@ -545,6 +552,7 @@ body.loading, html.loading {
     color: var(--white);
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .art-direction-section::before {
@@ -821,6 +829,9 @@ body.loading, html.loading {
     padding: var(--space-2xl) 0 var(--space-lg);
     position: relative;
     overflow: hidden;
+    z-index: 100;
+    margin-top: 0;
+    width: 100%;
 }
 
 .footer::before {
@@ -840,6 +851,7 @@ body.loading, html.loading {
     padding: 0 var(--space-lg);
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
 .footer-bottom {
@@ -850,10 +862,11 @@ body.loading, html.loading {
     align-items: center;
     flex-wrap: wrap;
     gap: var(--space-md);
+    width: 100%;
 }
 
 .footer-copyright {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     font-size: var(--font-size-sm);
 }
 
@@ -970,6 +983,8 @@ body.loading, html.loading {
     transform: scale(1.1);
     transition: all var(--transition-smooth);
     visibility: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .main-content.show {
@@ -996,6 +1011,138 @@ body.loading, html.loading {
 }
 
 /* ==========================================================================
+   DARK MODE FIXES
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --light-gray: #1f2937;
+        --white: #111827;
+        --dark-slate: #f9fafb;
+        --light-slate: #d1d5db;
+        --medium-slate: #9ca3af;
+    }
+
+    /* Header fixes for dark mode */
+    .header {
+        background: rgba(17, 24, 39, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header.scrolled {
+        background: rgba(17, 24, 39, 0.98);
+    }
+
+    .logo {
+        color: #f9fafb;
+    }
+
+    .brand-name {
+        color: #f9fafb;
+        opacity: 1;
+    }
+
+    /* Hero section fixes */
+    .hero-title {
+        background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+        color: #f9fafb;
+        opacity: 0.9;
+    }
+
+    .scroll-indicator {
+        color: #f9fafb;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-circle {
+        border-color: #f9fafb;
+    }
+
+    .scroll-arrow {
+        border-right-color: #f9fafb;
+        border-bottom-color: #f9fafb;
+    }
+
+    /* What I Do section fixes */
+    .what-i-do-title {
+        color: #f9fafb;
+    }
+
+    .main-statement {
+        color: #f9fafb;
+    }
+
+    .section-label {
+        color: var(--primary-blue);
+    }
+
+    /* Art Direction section fixes */
+    .art-direction-title {
+        background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .art-direction-description {
+        color: rgba(249, 250, 251, 0.9);
+    }
+
+    /* Service cards fixes */
+    .service-card {
+        background: #374151;
+        color: #f9fafb;
+        border: 1px solid #4b5563;
+    }
+
+    .service-title {
+        color: #f9fafb;
+    }
+
+    /* Modal fixes */
+    .contact-modal {
+        background: #1f2937;
+        color: #f9fafb;
+        border: 1px solid #374151;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        background: #374151;
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: #9ca3af;
+    }
+
+    .form-group label {
+        color: #f9fafb;
+    }
+
+    .modal-close {
+        color: #f9fafb;
+    }
+
+    .modal-close:hover {
+        color: #d1d5db;
+    }
+
+    /* Footer fixes for dark mode */
+    .footer-copyright {
+        color: rgba(249, 250, 251, 0.8);
+    }
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
 
@@ -1014,10 +1161,12 @@ body.loading, html.loading {
 
     .header {
         padding: var(--space-md);
+        backdrop-filter: blur(20px);
     }
 
     .header.scrolled {
         padding: 0.75rem var(--space-md);
+        background: rgba(26, 26, 46, 0.98);
     }
 
     .hero-content {
@@ -1093,15 +1242,27 @@ body.loading, html.loading {
     .shape-4 { width: 65px; height: 65px; top: 15%; right: 15%; }
     .shape-5 { width: 45px; height: 70px; bottom: 15%; right: 35%; }
 
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-        text-align: center;
+    .footer {
+        padding: var(--space-xl) 0 var(--space-lg);
+        margin-top: 0;
+        position: relative;
+        z-index: 100;
+    }
+
+    .footer-container {
+        padding: 0 var(--space-md);
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        gap: var(--space-sm);
+    }
+
+    .footer-copyright {
+        font-size: var(--font-size-sm);
+        text-align: center;
+        width: 100%;
     }
 
     .footer-decoration {
@@ -1111,6 +1272,17 @@ body.loading, html.loading {
     #lottie-container {
         width: clamp(250px, 80vw, 400px);
         height: clamp(250px, 80vw, 400px);
+    }
+
+    /* Dark mode mobile fixes */
+    @media (prefers-color-scheme: dark) {
+        .header {
+            background: rgba(17, 24, 39, 0.98);
+        }
+
+        .header.scrolled {
+            background: rgba(17, 24, 39, 0.98);
+        }
     }
 }
 
@@ -1162,16 +1334,16 @@ body.loading, html.loading {
     }
 
     .footer {
-        padding: var(--space-xl) 0 var(--space-lg);
+        padding: var(--space-lg) 0 var(--space-md);
     }
 
     .footer-container {
-        padding: 0 var(--space-md);
+        padding: 0 var(--space-sm);
     }
 
-    .footer-legal {
-        flex-direction: column;
-        gap: var(--space-sm);
+    .footer-copyright {
+        font-size: 0.75rem;
+        padding: var(--space-sm) 0;
     }
 
     .contact-modal {
@@ -1218,37 +1390,6 @@ body.loading, html.loading {
 
     .shape, .sphere, .visual-shape, .cube, .floating-sphere {
         animation: none;
-    }
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --light-gray: #1f2937;
-        --white: #111827;
-        --dark-slate: #f9fafb;
-        --light-slate: #d1d5db;
-    }
-
-    .service-card {
-        background: #374151;
-        color: #f9fafb;
-    }
-
-    .contact-modal {
-        background: #1f2937;
-        color: #f9fafb;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        background: #374151;
-        border-color: #4b5563;
-        color: #f9fafb;
-    }
-
-    .form-group label {
-        color: #f9fafb;
     }
 }
 
@@ -1387,4 +1528,4 @@ select:focus {
 
 /* ==========================================================================
    END OF STYLESHEET
-   ========================================================================== */
+   ==========================================================================
