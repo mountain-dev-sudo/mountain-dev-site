@@ -526,15 +526,28 @@ const Utils = {
         });
 
         const footer = document.querySelector('.footer');
-        if (footer) {
-            Object.assign(footer.style, {
-                opacity: '0',
-                transform: 'translateY(50px)',
-                transition: 'all 0.8s ease-out'
+
+            const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                footer.classList.add('visible');
+                }
             });
-            footerObserver.observe(footer);
+            }, {
+            threshold: 0.1,
+            });
+
+            // Observe only if footer exists
+            if (footer) {
+            observer.observe(footer);
+
+            // Trigger immediately if already in view
+            if (footer.getBoundingClientRect().top < window.innerHeight) {
+                footer.classList.add('visible');
+            }
+            }
+
         }
-    }
 };
 
 // Initialize everything when DOM is loaded
