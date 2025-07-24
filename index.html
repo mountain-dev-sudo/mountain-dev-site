@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack Gross - Visual Designer | Modern Digital Experiences</title>
+    <meta name="description" content="Jack Gross is a visual designer crafting digital experiences that inspire and connect. Specializing in applications, websites, and illustrations.">
+    <meta name="keywords" content="visual designer, web design, applications, illustrations, digital experiences">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" as="script">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//formsubmit.co">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jack Gross",
+        "jobTitle": "Visual Designer",
+        "description": "Crafting digital experiences that inspire and connect",
+        "url": window.location.href
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" aria-hidden="true">
+        <div id="lottie-container" role="img" aria-label="Loading animation"></div>
+        <div class="loading-progress" role="progressbar" aria-valuenow="0" aria-valuemax="100">
+            <div class="loading-progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="logo">MOUNTAIN DEV.</div>
+        <div class="brand-name">— Jack Gross</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-container" aria-labelledby="hero-title">
+            <div class="background-gradient" aria-hidden="true"></div>
+            
+            <div class="hero-content">
+                <div class="text-content">
+                    <h1 id="hero-title" class="hero-title">Hello, my name's Jack. I'm a Visual Designer.</h1>
+                    <p class="hero-subtitle">Crafting digital experiences that inspire and connect.</p>
+                    
+                    <button class="scroll-indicator" onclick="scrollToNext()" aria-label="Scroll to next section">
+                        <div class="scroll-circle">
+                            <div class="scroll-arrow" aria-hidden="true"></div>
+                        </div>
+                        <span>Scroll down</span>
+                    </button>
+                </div>
+                
+                <div class="visual-content">
+                    <div class="lottie-container">
+                        <div class="lottie-animation" id="heroLottieAnimation" role="img" aria-label="Hero animation"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Do Section -->
+        <section class="what-i-do-section" aria-labelledby="what-i-do-title">
+            <div class="what-i-do-container">
+                <div class="visual-content">
+                    <div class="lottie-container">
+                        <div class="lottie-animation" id="lottieAnimation" role="img" aria-label="What I do animation"></div>
+                    </div>
+                </div>
+
+                <div class="what-i-do-content">
+                    <div class="section-label">What I Do</div>
+                    <p id="what-i-do-title" class="what-i-do-title">I enjoy creating delightful, human-centered digital experiences.</p>
+                    <h2 class="main-statement">Think. Make. Solve.</h2>
+                    
+                    <button class="cta-button" onclick="openModal()" aria-describedby="contact-description">
+                        Contact Me
+                    </button>
+                    <div id="contact-description" class="sr-only">Opens contact form modal</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section" aria-labelledby="services-heading">
+            <div class="services-container">
+                <h2 id="services-heading" class="sr-only">Services Offered</h2>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <h3 class="service-title">Want an application?</h3>
+                        <div class="lottie-animation" id="buyingGroceryLottieAnimation" role="img" aria-label="Application development animation"></div>
+                    </article>
+                    
+                    <article class="service-card">
+                        <h3 class="service-title">Want a website?</h3>
+                        <div class="lottie-animation" id="getInTouchLottieAnimation" role="img" aria-label="Website development animation"></div>
+                    </article>
+                    
+                    <article class="service-card">
+                        <h3 class="service-title">Want an Illustration/Animation?</h3>
+                        <div class="lottie-animation" id="animationLottieAnimation" role="img" aria-label="Illustration and animation services"></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Art Direction Section -->
+        <section class="art-direction-section" aria-labelledby="art-direction-title">
+            <div class="art-direction-container">
+                <div class="art-direction-content">
+                    <div class="section-label">Cost-Smart Creative Solutions</div>
+                    <h2 id="art-direction-title" class="art-direction-title">I develop standout ideas that stay on budget and deliver high value.</h2>
+                    <p class="art-direction-description">By combining deep research with strategic collaboration, I deliver breakthrough ideas with minimal overhead</p>
+                </div>
+                
+                <div class="visual-content">
+                    <div class="lottie-container">
+                        <div class="lottie-animation" id="costLottieAnimation" role="img" aria-label="Cost-effective solutions animation"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-decoration" aria-hidden="true"></div>
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; <span id="current-year">2024</span> Jack Gross. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contactModal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="contact-modal">
+            <header class="modal-header">
+                <h3 id="modal-title">Get In Touch</h3>
+                <button class="modal-close" onclick="closeModal()" aria-label="Close contact form">&times;</button>
+            </header>
+            
+            <div id="form-wrapper">
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required aria-describedby="name-error">
+                        <div id="name-error" class="error-message" role="alert"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required aria-describedby="email-error">
+                        <div id="email-error" class="error-message" role="alert"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="4" required aria-describedby="message-error"></textarea>
+                        <div id="message-error" class="error-message" role="alert"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="submit-btn">
+                            <span class="button-text">Send Message</span>
+                            <span class="loading-spinner" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="email-btn" id="emailBtn">Get in Touch</button>
+                    </div> 
+                    
+                    <a href="tel:+1234567890" class="call-link" aria-label="Call Jack Gross at +1234567890">
+                        Call Me!
+                    </a>
+                </form>
+            </div>
+            
+            <div id="success-animation" style="display: none;" role="status" aria-live="polite">
+                <div id="success-lottie-container" role="img" aria-label="Success animation"></div>
+            </div>
+        </div> 
+    </div>
+
+    <!-- Copy Notification -->
+    <div id="copied-animation" role="status" aria-live="polite" aria-hidden="true">
+        <p>Copied to clipboard!</p>
+        <div id="copied-lottie-container" role="img" aria-label="Copy confirmation animation"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
+    <script src="script.js" defer></script>
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Basic error handling for script loading
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'SCRIPT') {
+                console.warn('Script failed to load:', e.target.src);
+            }
+        });
+    </script>
+</body>
+</html>
